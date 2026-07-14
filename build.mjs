@@ -5,7 +5,7 @@
 //   node build.mjs          # 두 도메인 저장소에 생성
 //   node --test             # 렌더 로직 파리티 검증
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +22,7 @@ export function render(template, vars) {
   return out;
 }
 
-export function buildTarget(target, pages, { templatesDir, baseDir }) {
+export function buildTarget(target, pages, { templatesDir, baseDir, assets = [] }) {
   const written = [];
   for (const page of pages) {
     const tpl = readFileSync(join(templatesDir, page.template), 'utf8');
@@ -32,13 +32,19 @@ export function buildTarget(target, pages, { templatesDir, baseDir }) {
     writeFileSync(outPath, html);
     written.push(outPath);
   }
+  for (const asset of assets) {
+    const outPath = resolve(baseDir, target.outDir, asset.to);
+    mkdirSync(dirname(outPath), { recursive: true });
+    copyFileSync(resolve(baseDir, asset.from), outPath);
+    written.push(outPath);
+  }
   return written;
 }
 
 // node build.mjs 로 직접 실행할 때만 파일을 쓴다(테스트 import 시엔 실행 안 함).
 if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) {
-  const { targets, pages } = await import('./site.config.mjs');
-  const opts = { templatesDir: join(HERE, 'templates'), baseDir: HERE };
+  const { targets, pages, assets } = await import('./site.config.mjs');
+  const opts = { templatesDir: join(HERE, 'templates'), baseDir: HERE, assets };
   for (const t of targets) {
     const written = buildTarget(t, pages, opts);
     console.log(`[${t.key}] ${written.length}개 생성:`);

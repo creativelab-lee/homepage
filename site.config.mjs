@@ -25,3 +25,10 @@ export const pages = [
   { template: 'index.html', out: 'index.html' },
   { template: 'mytv-privacy.html', out: 'mytv-privacy/index.html' },
 ];
+
+// 정적 에셋(실제 앱 아이콘 등) — 두 배포 대상에 그대로 복사한다.
+export const assets = [
+  { from: 'assets/icons/calendar.png', to: 'assets/icons/calendar.png' },
+  { from: 'assets/icons/song.png', to: 'assets/icons/song.png' },
+  { from: 'assets/icons/mytv.png', to: 'assets/icons/mytv.png' },
+];
