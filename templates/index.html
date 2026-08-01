@@ -98,9 +98,6 @@
   .links a.primary{background:var(--ink);color:var(--surface)}
   .links a.primary:hover{background:var(--indigo);border-color:var(--indigo)}
   .links a:not(.primary):hover{background:var(--ink);color:var(--surface)}
-  .beta{font-size:.86rem;color:var(--soft);margin:14px 0 9px;padding:10px 12px;
-    background:#F4F2FB;border:1.5px solid #D9D3F5;border-radius:10px;line-height:1.42}
-  .beta b{color:var(--indigo)}
 
   /* 공정 (실제 순서라 번호 사용) */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
@@ -198,18 +195,14 @@
         <div>
           <h3>오늘의 노래</h3>
           <div class="from">← "오늘 들을 노래 추천해줘" 에서 시작</div>
-          <span class="status live"><span class="led"></span>App Store 출시</span>
+          <span class="status live"><span class="led"></span>App Store · Google Play 출시</span>
         </div>
       </div>
       <p class="desc">그날의 날씨·기분·취향·운세로 매일 한 곡을 추천. 국가별 인기차트·장르별 둘러보기·라이브 방송(라디오)에 30초 미리듣기까지.</p>
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6785766359"> App Store (iPhone)</a>
+        <a class="primary" href="https://play.google.com/store/apps/details?id=com.creativelab.todays_song">▶ Google Play (Android)</a>
         <a href="{{PRIVACY_BASE}}/todays-song-privacy/">개인정보처리방침</a>
-      </div>
-      <p class="beta">🤖 <b>Android는 테스터 모집 중</b> — ① 아래 그룹에 먼저 가입한 뒤 ② 같은 구글 계정으로 설치하세요.</p>
-      <div class="links">
-        <a href="https://groups.google.com/g/todays_song_tester">① 구글 그룹 가입</a>
-        <a href="https://play.google.com/store/apps/details?id=com.creativelab.todays_song">② 플레이스토어 설치</a>
       </div>
     </article>
 
