@@ -71,6 +71,9 @@
   .sticky:nth-child(5){background:var(--amber);transform:rotate(2deg)}
   .sticky:nth-child(6){background:var(--mint);transform:rotate(-3deg)}
   .sticky:nth-child(7){background:var(--sky);transform:rotate(3deg)}
+  .sticky:nth-child(8){background:var(--coral);transform:rotate(-2deg)}
+  .sticky:nth-child(9){background:var(--amber);transform:rotate(3deg)}
+  .sticky:nth-child(10){background:var(--mint);transform:rotate(-4deg)}
   .sticky.add{background:transparent;border:2.5px dashed var(--indigo);color:var(--indigo);
     justify-content:center;text-align:center;font-weight:700;text-decoration:none;transform:rotate(-1deg)}
   .sticky.add:hover{background:rgba(58,43,212,.06)}
@@ -165,6 +168,8 @@
     <div class="sticky">오늘 날씨에 맞는 노래 추천</div>
     <div class="sticky">웹 영상을 TV로 크게 보기</div>
     <div class="sticky">인터넷 없이 두는 AI 바둑</div>
+    <div class="sticky">기타 코드 짚는 법 알려주는 앱</div>
+    <div class="sticky">로또 번호 대신 뽑아주는 앱</div>
     <a class="sticky add" href="mailto:{{EMAIL}}?subject=아이디어 제안">+ 당신의<br>아이디어</a>
   </section>
 
@@ -251,6 +256,38 @@
       <div class="links">
         <a class="primary" href="https://apps.apple.com/app/id6795930564"> App Store (iPhone)</a>
         <a href="{{PRIVACY_BASE}}/voicenotes-privacy/">개인정보처리방침</a>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <div class="top">
+        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/fretwise.png" alt="" width="48" height="48" /></div>
+        <div>
+          <h3>Fretwise — 기타 배우기</h3>
+          <div class="from">← "기타 코드 짚는 법 알려줘" 에서 시작</div>
+          <span class="status live"><span class="led"></span>App Store 출시</span>
+        </div>
+      </div>
+      <p class="desc">코드 운지를 프렛보드로 익히고 진행으로 연습하는 기타 학습 앱. 실력을 추적하는 AI 코치가 오늘 연습할 코드를 골라주며, 전부 기기 안에서 동작합니다.</p>
+      <div class="links">
+        <a class="primary" href="https://apps.apple.com/app/id6797015161"> App Store (iPhone)</a>
+        <a href="{{PRIVACY_BASE}}/fretwise-privacy/">개인정보처리방침</a>
+      </div>
+    </article>
+
+    <article class="card reveal">
+      <div class="top">
+        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/lottolab.png" alt="" width="48" height="48" /></div>
+        <div>
+          <h3>로또랩</h3>
+          <div class="from">← "로또 번호 대신 뽑아줘" 에서 시작</div>
+          <span class="status live"><span class="led"></span>App Store 출시</span>
+        </div>
+      </div>
+      <p class="desc">역대 당첨 데이터를 통계로 분석해 번호를 생성하고 저장·관리하는 로또 도우미. 당첨 데이터가 앱에 내장돼 인터넷 없이도 동작합니다.</p>
+      <div class="links">
+        <a class="primary" href="https://apps.apple.com/app/id6796949878"> App Store (iPhone)</a>
+        <a href="{{PRIVACY_BASE}}/lottolab-privacy/">개인정보처리방침</a>
       </div>
     </article>
 

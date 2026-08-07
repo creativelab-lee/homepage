@@ -35,4 +35,6 @@ export const assets = [
   { from: 'assets/icons/mytv.png', to: 'assets/icons/mytv.png' },
   { from: 'assets/icons/voicenotes.png', to: 'assets/icons/voicenotes.png' },
   { from: 'assets/icons/sudam.png', to: 'assets/icons/sudam.png' },
+  { from: 'assets/icons/fretwise.png', to: 'assets/icons/fretwise.png' },
+  { from: 'assets/icons/lottolab.png', to: 'assets/icons/lottolab.png' },
 ];
