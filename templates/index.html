@@ -102,6 +102,17 @@
   .links a.primary:hover{background:var(--indigo);border-color:var(--indigo)}
   .links a:not(.primary):hover{background:var(--ink);color:var(--surface)}
 
+  /* 제품 페이저 — JS가 없으면 카드 전체가 그대로 보인다 */
+  .card.page-hidden{display:none}
+  .pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:24px}
+  .pager button{font:600 14px var(--body);min-width:38px;height:38px;padding:0 12px;border-radius:10px;
+    border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);cursor:pointer;
+    transition:background .2s,color .2s}
+  .pager button:hover{background:var(--ink);color:var(--surface)}
+  .pager button[aria-current="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
+  .pager button:disabled{opacity:.35;cursor:default}
+  .pager button:disabled:hover{background:var(--surface);color:var(--ink)}
+
   /* 공정 (실제 순서라 번호 사용) */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px}
   .step{padding:22px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line)}
@@ -176,8 +187,8 @@
   <!-- 만들어진 제품 -->
   <div class="label reveal" id="products"><h2>만들어진 제품</h2><div class="rule"></div></div>
   <p class="note-line reveal">아이디어가 실제로 출시된 것들.</p>
-  <section class="grid">
-    <!-- ▼ 제품 카드 (복사해서 추가) ▼ -->
+  <section class="grid" id="productGrid">
+    <!-- ▼ 제품 카드 (복사해서 추가 — 6장 넘으면 페이저가 자동 생성됨) ▼ -->
     <article class="card reveal">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/calendar.png" alt="" width="48" height="48" /></div>
@@ -344,6 +355,44 @@
     },{threshold:.12});
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
+
+  // 제품 카드 페이징 — 카드가 PAGE_SIZE를 넘을 때만 페이저를 만든다.
+  (function(){
+    var PAGE_SIZE = 6;
+    var grid = document.getElementById('productGrid');
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.children);
+    if (cards.length <= PAGE_SIZE) return;
+    var total = Math.ceil(cards.length / PAGE_SIZE);
+    var pager = document.createElement('nav');
+    pager.className = 'pager';
+    pager.setAttribute('aria-label', '제품 목록 페이지');
+    grid.parentNode.insertBefore(pager, grid.nextSibling);
+
+    function show(page, scroll){
+      cards.forEach(function(card, i){
+        var visible = i >= page * PAGE_SIZE && i < (page + 1) * PAGE_SIZE;
+        card.classList.toggle('page-hidden', !visible);
+        if (visible) card.classList.add('in'); // 숨김 상태로는 IntersectionObserver가 못 깨우므로 직접 표시
+      });
+      pager.innerHTML = '';
+      function btn(label, target, opts){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = label;
+        if (opts && opts.current) b.setAttribute('aria-current', 'true');
+        if (opts && opts.label) b.setAttribute('aria-label', opts.label);
+        if (target == null) b.disabled = true;
+        else b.addEventListener('click', function(){ show(target, true); });
+        pager.appendChild(b);
+      }
+      btn('‹', page > 0 ? page - 1 : null, {label: '이전 페이지'});
+      for (var p = 0; p < total; p++) btn(String(p + 1), p, {current: p === page});
+      btn('›', page < total - 1 ? page + 1 : null, {label: '다음 페이지'});
+      if (scroll) document.getElementById('products').scrollIntoView();
+    }
+    show(0, false);
+  })();
 </script>
 </body>
 </html>
