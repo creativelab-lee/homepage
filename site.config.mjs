@@ -41,4 +41,5 @@ export const assets = [
   { from: 'assets/icons/cardly.png', to: 'assets/icons/cardly.png' },
   { from: 'assets/icons/ttorang.png', to: 'assets/icons/ttorang.png' },
   { from: 'assets/icons/dailymap.png', to: 'assets/icons/dailymap.png' },
+  { from: 'assets/icons/aiemailreply.png', to: 'assets/icons/aiemailreply.png' },
 ];
