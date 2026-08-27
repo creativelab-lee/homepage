@@ -100,6 +100,7 @@
   .status.prod{color:var(--indigo);border-color:#c5bff7} .status.prod .led{background:var(--indigo)}
   .status.proto{color:#9a7715;border-color:#ecd7a6} .status.proto .led{background:var(--amber)}
   .status.live{color:#1f7a51;border-color:#bfe3cf} .status.live .led{background:#2E7D5B}
+  .status.soon{color:#b4552a;border-color:#f4cdb9} .status.soon .led{background:var(--coral)}
   .desc{font-size:.93rem;color:var(--soft);flex:1}
   .links{display:flex;flex-wrap:wrap;gap:8px}
   .links a{font-size:13px;text-decoration:none;padding:8px 14px;border-radius:9px;border:1.5px solid var(--ink);transition:background .2s,color .2s}
@@ -199,6 +200,21 @@
   <p class="note-line reveal">아이디어가 실제로 출시된 것들.</p>
   <section class="grid" id="productGrid">
     <!-- ▼ 제품 카드 (복사해서 추가 — 6장 넘으면 페이저가 자동 생성됨) ▼ -->
+    <article class="card reveal">
+      <div class="top">
+        <div class="icon photo" aria-hidden="true"><img src="/assets/icons/idphoto.png" alt="" width="48" height="48" /></div>
+        <div>
+          <h3>증명사진관</h3>
+          <div class="from">← "여권사진 찍으러 사진관까지 가야 하나" 에서 시작</div>
+          <span class="status soon"><span class="led"></span>App Store 심사 중</span>
+        </div>
+      </div>
+      <p class="desc">사진 한 장을 여권·주민등록증·이력서 등 39가지 규격으로 만들어 주는 증명사진 편집기. 얼굴을 인식해 자동으로 크롭하고 배경을 단색으로 바꾼 뒤, 머리 높이·눈높이·조명까지 11개 항목을 점검해 알려 줍니다. 사진은 기기 밖으로 나가지 않습니다.</p>
+      <div class="links">
+        <a href="{{PRIVACY_BASE}}/idphoto-privacy/">개인정보처리방침</a>
+      </div>
+    </article>
+
     <article class="card reveal">
       <div class="top">
         <div class="icon photo" aria-hidden="true"><img src="/assets/icons/calendar.png" alt="" width="48" height="48" /></div>

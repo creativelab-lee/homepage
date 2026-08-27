@@ -42,4 +42,5 @@ export const assets = [
   { from: 'assets/icons/ttorang.png', to: 'assets/icons/ttorang.png' },
   { from: 'assets/icons/dailymap.png', to: 'assets/icons/dailymap.png' },
   { from: 'assets/icons/aiemailreply.png', to: 'assets/icons/aiemailreply.png' },
+  { from: 'assets/icons/idphoto.png', to: 'assets/icons/idphoto.png' },
 ];
